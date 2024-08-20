@@ -1,0 +1,10 @@
+.alert-box{
+    background-color:aquamarine;
+    padding:20px;
+    color:white;
+    border-radius:5px;
+    display:none;
+}
+
+.list-group{display:none}
+.list-group.show{display:block}
