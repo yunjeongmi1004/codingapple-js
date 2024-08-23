@@ -13,11 +13,40 @@
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
           <span class="navbar-brand">Navbar</span>
+          <span class="badge bg-dark">Light 🔄</span>
           <button class="navbar-toggler" type="button">
             <span class="navbar-toggler-icon"></span>
           </button>
         </div>
     </nav>
+    <script>
+      //다크모드 
+      let count = 0;
+
+      document.querySelector('.badge').addEventListener('click', function(){
+      count += 1;
+      console.log(count) 
+      if(count % 3 === 2){
+          document.querySelector('.badge').innerHTML = 'Light 🔄';
+        }else{
+          document.querySelector('.badge').innerHTML = 'Dark 🔄';
+        }
+      })
+
+      // let :  재선언 불가 / 재항당 O 그럼 뭐가 좋은것임, 변수 까먹고 또만드는거 방지
+      // let 이름 = 'kim';
+      // let 이름 = 'yun';
+
+      // const : 재선언 X / 재할당 X / 변하면 안되는 값을 보관하기 좋을듯
+      // const 나이 = 30;
+      // 나이 = 40;
+
+      // var : 재선언 가능 / 재할당 가능
+      var 이름 = 'kim'
+      var 이름 = 'park'
+      console.log(이름)
+
+    </script>
     <ul class="list-group">
         <li class="list-group-item">An item</li>
         <li class="list-group-item">A second item</li>
@@ -81,12 +110,23 @@
         //     }
         // })
     
-        $('form').on('submit', function(e){
-            if(document.getElementById('email').value == ''){
-                alert('알림');
-                e.preventDefault();
-            }
-        })
+        // $('form').on('submit', function(e){
+        //     if(document.getElementById('email').value == ''){
+        //         alert('알림');
+        //         e.preventDefault();
+        //     }
+        // });
+
+        document.getElementById('email').addEventListener('change', function(){
+          console.log('안녕');
+        });
+
+        if(1 == '1'){
+          console.log('느슨한 비교')
+        }
+        if(1 === '1'){ // 타입까지 같아야 같다고 해줌 
+          console.log('엄격한비교')
+        }
     </script>
     
    
