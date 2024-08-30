@@ -33,7 +33,7 @@
 
     // {} 중괄호를 치면 object 자료형 {이름1 : 자료1 , 이름2 : 자료2, 이름3: 자료3}
     // {이름1(key) : 자료1(value)}
-    let car2 = {name : '벤츠', price: 200000, color:'black'}
+    let car2 = {name : '벤츠', price: [50000, 2000, 3000], color:'black'}
     car2.name = '포르쉐2'
     console.log(car2.name)
 
@@ -42,10 +42,12 @@
     // array는 그래서 자료간 정렬도 가능 car.sort(); 자료 자르기 가능 car.slice(1,3);
 
     document.querySelector('.name').innerHTML = car2.name;
-    document.querySelector('.price').innerHTML = car2.price;
+    document.querySelector('.price').innerHTML = car2.price[1];
 
     
 
+    // 개발방식 1. server-side rendering : 완성된 html 파일(데이터까지) : 서버가 html 다 만들어야 해서 서버가 귀찮음
+    // 개발방식 2. client-side rendering : 빈 html파일 + 데이터 : 서버가 편함 (요즘 많이 사용)
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
