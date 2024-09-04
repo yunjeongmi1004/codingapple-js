@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="apple.css">
+</head>
+<body>
+    
+    <div class="card-background">
+        <div class="card-box">
+            <img src="img/apple_card1.png">
+        </div>
+        <div class="card-box">
+            <img src="img/apple_card2.png">
+        </div>
+        <div class="card-box">
+            <img src="img/apple_card3.png">
+        </div>
+      </div>
+
+      <script>
+        $(window).scroll(function(){
+            var 높이 = $(window).scrollTop();
+            console.log(높이);
+
+            // 1. opacity 주기
+            // 650~1150까지 스크롤바를 내리면,
+            // 첫째카드의  opacity 1~0으로 서서히 변경해주셈
+
+            // 1차함수 : 높이가 650~1150일때 0~1이 되는  y는?
+            // var y = a * 높이 + b;
+
+            
+            // 수학시간 방정식을 잘풀어보면
+            // 1= a * 65 + b;
+            // 0= a * 1150 + b;
+            // a = -1/500;
+            // b = 115/50;
+            var y =(-1/500) * 높이 + 115/50;
+            $('.card-box').eq(0).css('opacity', y);
+
+
+
+
+            // 2. 사이즈줄이기 (transform : scale(0.9) 속성을 이용함)
+            // z = a * 높이 + b;
+            // 1 = a * 650 + b;
+            // 0.9 = a * 1150 + b;
+            // a = -1/5000;
+            // b = 565/500;
+            
+            var z = (-1/5000) * 높이 + 565/500;
+            $('.card-box').eq(0).css('transform', `scale( ${z} )`);
+        });
+      </script>
+</body>
+</html>
