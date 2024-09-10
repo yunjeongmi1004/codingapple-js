@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrow function</title>
+</head>
+<body>
+
+    <button id="버튼">버튼</button>
+
+  
+    <script>
+     
+     // 함수만드는법 1 , 2
+
+     function 함수(){
+
+     }
+
+     var 함수2 = function(){
+
+     }
+
+    //  var 함수3 = (a) =>{
+    //     console.log('3.arrow function')
+    //     return a + 10;
+    //  }
+
+    // 파라미터 1개면 소괄호 생략 가능
+    //  var 함수3 = a =>{
+    //     return a + 10;
+    //  }
+
+    // 코드 한줄이면 중괄호도 생략 가능
+     var 함수3 = a =>  console.log(a)
+     함수3(5);
+
+     [1,2,3,4].forEach(function(n){
+        console.log(n);
+     });
+
+     [1,2,3,4].forEach( n =>console.log(n) );
+
+     document.getElementById('버튼').addEventListener('click', (e) => {
+        e.currentTarget;
+        console.log(this);
+     })
+
+     var 오브젝트 = {
+        함수 : () => {
+            return this
+        }
+     }
+
+     console.log(오브젝트.함수())
+     console.log(오브젝트)
+
+
+    // arrow function의 특징 : 
+    // 아래 함수는 오브젝트1이 아닌 window가 출력됨
+    // 이유는 arrow function은 외부에 있던 this를 그대로 내부로 가져와서 사용하는 함수
+    // 내가 예측하던 this값과 달라질 수도 있으니 단점이 될수 있음. 참고해서 알고있어야함!!
+    // this의 뜻이 달라지는 것 처럼 일반 function과 용도가 완전 같지 않기 때문에
+    // 일반 function을 항상 대체할 수 있는 문법이 아닙니다. 그것만 주의합시다. 
+     var 오브젝트1 = {
+        함수 : () => { console.log(this) }
+        }
+
+    오브젝트1.함수()
+
+        
+    </script>
+</body>
+</html>

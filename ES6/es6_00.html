@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트 기본 문법 총정리</title>
+</head>
+<body>
+    <p id="hello">안녕</p>
+    <button id="button">버튼</button>
+    <div id="name">네임</div>
+    <script>
+
+        document.getElementById('hello').innerHTML =  '호호';
+        
+        document.getElementById('button').addEventListener('click', () => {
+          작명('오예') 
+        })
+
+        function 작명(파라미터){
+            document.getElementById('button').innerHTML =  파라미터;
+        }
+
+         let name = ['kim', 'yun'] // array 자료
+         console.log(name[1]);
+         
+         let name2 = {
+            name : 'kim',
+            age : 20
+         } // object 자료
+         console.log(name2.name);
+
+
+         [1,2,3,4].forEach(function(a){
+            console.log(a)
+         })
+
+
+    </script>
+</body>
+</html>

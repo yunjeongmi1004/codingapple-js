@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this</title>
+</head>
+<body>
+
+    <button id="버튼">버튼</button>
+    <button id="버튼2">버튼2</button>
+  
+    <script>
+        'use strict'; // 자바스크립트 strict mode
+
+        // x = 300;
+        // console.log(x)
+
+        // 1. 그냥 일반 함수에서 쓰면 window
+        console.log(this);
+
+
+        // 2. this : 오브젝트 내 함수 안에서 쓰면 그 함수를 가지고 있는 오브젝트를 뜻함
+        var 오브젝트 = {
+            data : 'kim',
+            함수 : function(){
+                console.log(this);
+            }
+        }
+        오브젝트.함수();
+
+
+        // 데이터 안에 또 오브젝트로 함수가 들어간 경우 this의 값이 달라짐
+        var 오브젝트2 = {
+            data : {
+                함수 : function(){
+                    console.log(this);
+                }
+            }
+        }
+        오브젝트2.data.함수();
+
+
+        // 신문법 Arrow Function 특징 : this값을 함수밖에 있던것 그대로 씀
+        var 오브젝트3 = {
+            data : {
+                // 함수 : () => {
+                //     console.log(this);
+                // }
+
+                // 오브젝트 안에 함수넣을 때 신문법
+                함수(){
+                    console.log(this);
+                }
+            }
+        }
+        오브젝트3.data.함수();
+
+        
+
+        // 3. this로 (constructor)에서 오브젝트 생산하는 법
+        var 어쩌구 = {}
+        function 기계(){
+            this.이름 = 'kim';
+        }
+
+        var 오브젝트4 = new 기계();
+
+
+        // 4. eventlistener 안에서 쓰면 this는 e.currentTarget이라는 의미
+        document.getElementById('버튼').addEventListener('click', function(e){
+             // e.currentTarget;
+            console.log(this);
+            console.log(e.currentTarget)
+        })
+        
+        document.getElementById('버튼2').addEventListener('click', function(e){
+            var 어레이 = [1,2,3];
+            어레이.forEach(function(a){
+                console.log(this);
+            })
+        })
+
+        var 오브젝트5 = {
+            이름들  : ['철수', '영희', '맹구'],
+            함수 : function(){
+                console.log(this);
+                오브젝트5.이름들.forEach(()=>{
+                    console.log(this);
+                })
+            }
+        }
+        console.log(오브젝트5);
+
+
+        
+        
+    </script>
+</body>
+</html>
