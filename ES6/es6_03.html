@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<button id="버튼">버튼</button>
+
 
 
 <script>
@@ -16,6 +16,9 @@
 // 이 오브젝트에 sayHi라는 함수를 (메소드를) 하나 추가하고 싶습니다. 
 var 사람 = {
   name: '손흥민',
+  sayHi: function(){ // arrow 펑션을 쓸 경우 답이 달라짐
+    console.log('안녕 나는' + this.name)
+  }
 }
 
 사람.sayHi(); //안녕 나는 손흥민
@@ -36,7 +39,18 @@ var 사람 = {
 var 자료 = { 
   data : [1,2,3,4,5] 
 }
+
+자료.전부더하기 = function(){
+  var 합 = 0;
+   this.data.forEach(function(a){
+    합+=a; // 합 = 합 + a
+   })
+   console.log(합)
+}
+
 자료.전부더하기();
+
+
 
 // 위처럼 자료.전부더하기()라고 쓰면 자료.data 안에 있는 모든 숫자를 더해서 콘솔창에 출력해주어야합니다. 
 // (아마 15가 뜨게 되겠죠?)
@@ -62,6 +76,7 @@ var 자료 = {
 
 <!-- 버튼을 클릭하면 지금 누른 버튼에 담긴 글자를 출력하는 기능을 만들고 싶어서 이렇게 코드를 짰습니다 -->
 <button id="버튼">버튼이에요</button>
+<button id="버튼2">버튼이에요2</button>
 
 <script>
 
@@ -69,8 +84,21 @@ var 자료 = {
 // Q. 그럼 setTimeout을 이용해서 1초 후에 this.innerHTML을 콘솔창에 출력하고 싶으면 어떻게 코드를 수정해야할까요?
 // 1초 후에 '버튼이에요'라는 글자가 콘솔창에 등장하면 성공입니다. 
 
+// setTimeout(function(){}, 1000)
+
   document.getElementById('버튼').addEventListener('click', function(){
-    console.log(this.innerHTML)
+    setTimeout(()=>{
+      console.log(this.innerHTML)
+    }, 1000);
+  });
+
+
+  //옛날방식
+  document.getElementById('버튼2').addEventListener('click', function(){
+    var 버튼 = this;
+    setTimeout(function(){
+      console.log(버튼.innerHTML)
+    }, 1000);
   });
 
 </script>

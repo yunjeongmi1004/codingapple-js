@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>변수 신문법 총정리 1. var let const와 선언,할당,범위</title>
+</head>
+<body>
+
+
+
+
+<script>
+
+// 변수 : 선언, 할당, 범위, 호이스팅
+
+// 선언 할당 범위 
+var 이름 = 'kim';
+var 이름 = 'yun';//재선언 가능, 재할당 가능
+
+let 나이 = 20;//재선언 불가, 재할당 가능
+// let 나이 = 30;
+나이 = 30;
+
+const 사람 = {이름 : 'kim'} // 재선언 불가, 재할당 불가
+사람.이름  = 'park';
+Object.freeze(사람);
+사람.이름  = 'yun';
+
+// 변수의 Hoisting 현상 : 변수의 선언을 변수 범위 맨위로 끌고오는 현상 (함수도 마찬가지)
+// 변수를 만나면 선언부분을 강제로 맨위로 끌어올림
+console.log(학교);
+var 학교 = '성공';
+console.log(학교);
+
+// 변수 동시에 여러개 만들기
+var 지역 = '인천', 나라 = '대한민국';
+console.log(나라);
+
+// window로 전영변수 만들기
+window.이름 = '김';
+console.log(이름);
+console.log(window.이름);
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
