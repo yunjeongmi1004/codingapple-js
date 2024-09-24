@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>변수 연습문제</title>
+</head>
+<body>
+
+
+
+
+<script>
+
+// 문제 1 . 변수 호이스팅
+함수();
+function 함수() {
+  console.log(안녕);
+  var 안녕 = 'Hello!';
+
+  // let / const  는 hoisting 시 undefined 자동으로 할당 안됨
+  // var : hoisting 시 undefined 할당 됨
+} 
+
+
+
+
+// 문제 2 . 함수표현 식 호이스팅
+// 함수2();
+var 함수2 = function() {
+  console.log(안녕);
+  var 안녕 = 'Hello!';
+
+  // function 함수(){} : 전부가 hoisting 됨
+  // var 함수 = function(){} : 선언 부분만 hoisting 됨
+} 
+// var 함수2 선언만 지금 위에 있는거임
+
+
+
+
+// 문제3 
+let a = 1;
+var 함수3 = function() {
+  a = 2;
+}
+// 함수3(); 함수 실행을 해야 2가 나옴 , 실행 전에는 1
+
+console.log(a);
+
+
+
+
+// 문제4
+let b = 1;
+var c = 2;
+window.b = 3;
+window.c = 4;
+
+console.log(b + c);
+// 해설 
+// var c = 2; 나 window.c = 4; 나 같은 의미임 고로 재할당이 되므로 c = 4가 됨
+// let b = 1 나랑 가장 가까운 범위의 변수를 사용하려 하기 때문에 let b = 1이 됨
+// b + c = 5가 나옴
+
+
+
+
+// 문제 5 
+// setTimeout(function() { console.log(1); }, 1000 ); 
+// setTimeout(function() { console.log(2); }, 2000 ); 
+// setTimeout(function() { console.log(3); }, 3000 ); 
+// setTimeout(function() { console.log(4); }, 4000 ); 
+// setTimeout(function() { console.log(5); }, 5000 ); 
+
+// 반복문이 제대로 돌지 않는 이유? 5 라는 값으로 5번 출력됨
+// 반복문은 잘 썼지만, 실행 시점이 다르다.
+// 바로 실행 되는 코드가 아님, 1~5초 후에 실행됨
+// 반복문이 다 실행되고 전역변수로 남아있음 var i
+// 
+// for (var i = 0; i < 5; i++) { 
+//   setTimeout(function() { console.log(i); }, i*1000 ); 
+// }
+// let 으로 바꾸게 되면 
+for (let i = 1; i < 6; i++) { 
+    // let i = 0; // let 변수는 범위가 중괄호, for반복문도 중괄호에 해당
+  setTimeout(function() { console.log(i); }, i*1000 ); 
+}
+
+
+
+
+
+</script>
+
+
+<div style="display : none">모달창0</div>
+<div style="display : none">모달창1</div>
+<div style="display : none">모달창2</div>
+
+<button>버튼0</button>
+<button>버튼1</button>
+<button>버튼2</button>
+
+<script> 
+// 반복문이 다 돌고 이벤트 리스너를 실행하기 때문에 코드 실행 시점이 다르기때문에
+// i =3 밖에 없기 때문에 그것을 쓰기때문에 에러가 남
+// 이벤트 리스너 반복시키기 : 해결책은 let 변수
+var 버튼들 = document.querySelectorAll('button');
+var 모달창들 = document.querySelectorAll('div');
+
+// for (var i = 0; i < 3; i++){
+//   버튼들[i].addEventListener('click', function(){
+//     모달창들[i].style.display = 'block';
+//   });
+// }
+
+for (let i = 0; i < 3; i++){
+// let i =??;
+  버튼들[i].addEventListener('click', function(){
+    모달창들[i].style.display = 'block';
+  });
+
+}
+
+</script>
+
+</body>
+</html>
