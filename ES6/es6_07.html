@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spread Operator</title>
+</head>
+<body>
+
+
+
+
+<script>
+
+// ...spread operator 특징
+
+// 1. array에 붙이면 대괄호를 제거해줍니다.
+var 어레이 = ['hello', 'world'];
+console.log(...어레이) // console.log('hello', 'world')
+
+// 2. 문자에 붙이면 펼쳐줍니다.
+var 문자 = 'hello';
+console.log(...문자); // console.log('h', 'e', 'l', 'l', 'o')
+
+// 3. 쓸곳 어레이 합치기 / 복사(deep copy 할때 유용함)
+var a = [1,2,3];
+var b = [4,5];
+var c = [...a, ...b];
+
+// 쓸곳1 . deep copy
+var d = [1,2,3];
+var e = d;
+d[3] = 4;
+console.log(d);
+console.log(e);
+// ---> 그냥 등호로 카피하면 값을 공유해버림
+
+var d2 = [1,2,3];
+var e2 = [...d2];
+d2[3] = 4;
+console.log(d2);
+console.log(e2);
+// ---> reference data type(array, object)는 함부로(등호로) 복사하지 말것
+// 값을 공유하지 않는 독립적인 값을 가지도록 복사하려면 spread operator를 이용
+
+// 쓸곳2 . 오브젝트 합치기 / deep copy
+var o1 = { a : 1, b : 2};
+var o2 = { ...o1, c : 3}
+console.log(o2) // var o2만들 때 o1에 있던거 그대로 넣고 싶음
+
+// 쓸곳3 . 함수 파라미터 넣을 때 
+function 더하기(a, b, c){
+  console.log(a + b + c)
+}
+
+var 어레이3 = [10,20,30]
+// 요즘방식
+더하기(...어레이3);
+// 주먹구구식
+더하기(어레이3[0], 어레이3[1], 어레이3[2])
+// 옛날 방식
+더하기.apply(undefined,  어레이3);
+
+// + apply 함수 개념설명
+
+
+</script>
+
+</body>
+</html>
